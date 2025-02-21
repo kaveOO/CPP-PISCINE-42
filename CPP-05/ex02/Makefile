@@ -12,9 +12,12 @@ CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -g -std=c++98
 
 # FILES
-FILES		=	main		\
-				Bureaucrat	\
-				Form		\
+FILES		=	main					\
+				Bureaucrat				\
+				AForm					\
+				PresidentialPardonForm	\
+				RobotomyRequestForm		\
+				ShrubberyCreationForm	\
 
 SRC			=	$(addsuffix .cpp, $(FILES))
 OBJ			=	$(addsuffix .o, $(FILES))

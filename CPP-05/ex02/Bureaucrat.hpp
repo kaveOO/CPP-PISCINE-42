@@ -1,6 +1,8 @@
 #pragma once
 
-#include "Bureaucrat.h"
+#include "AForm.hpp"
+
+#include <string>
 
 class AForm;
 

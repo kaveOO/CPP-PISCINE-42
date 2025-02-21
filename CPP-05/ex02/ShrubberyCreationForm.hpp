@@ -1,6 +1,8 @@
 #pragma once
 
-#include "Bureaucrat.h"
+#include "AForm.hpp"
+
+#include <fstream>
 
 class ShrubberyCreationForm : public AForm
 {
@@ -16,5 +18,5 @@ class ShrubberyCreationForm : public AForm
 		// Overload Operator(s)
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &assign);
 		// Class Function(s)
-		void	executeContract();
+		void	executeContract() const;
 };
