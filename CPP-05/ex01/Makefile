@@ -27,7 +27,7 @@ $(NAME)		:	$(OBJ)
 				echo -e '$(LIGHT_PURPLE) \tCompiled$(DARK_PURPLE) $@'
 
 clean		:
-				$(RM) $(OBJ) cool_shrubbery
+				$(RM) $(OBJ)
 				echo -e '$(LIGHT_PURPLE) \tCleaned$(PURPLE) $(OBJ)'
 
 fclean		:	clean
