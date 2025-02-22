@@ -73,6 +73,19 @@ void Bureaucrat::signForm(AForm &AForm)
 	}
 }
 
+void Bureaucrat::executeForm(const AForm &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->name << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << this->name << " couldn’t execute " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
 // Overload Operator(s)
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &assign)
 {

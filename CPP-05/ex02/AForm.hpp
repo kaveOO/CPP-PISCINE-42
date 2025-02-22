@@ -30,7 +30,7 @@ class AForm
 		int			getGradeToExec() const;
 		// Class Function(s)
 		void		beSigned(Bureaucrat &Bureaucrat);
-		void		beExecuted(Bureaucrat &Bureaucrat);
+		void		execute(Bureaucrat const &executor) const;
 		virtual void executeContract() const = 0;
 	// Exception(s)
 	class GradeTooHighException : public std::exception
@@ -38,6 +38,10 @@ class AForm
 		virtual const char *what() const throw();
 	};
 	class GradeTooLowException : public std::exception
+	{
+		virtual const char *what() const throw();
+	};
+	class FormNotSignedException : public std::exception
 	{
 		virtual const char *what() const throw();
 	};

@@ -83,13 +83,34 @@ void AForm::beSigned(Bureaucrat &Bureaucrat)
 	}
 }
 
+void AForm::execute(Bureaucrat const &executor) const
+{
+	if (executor.getGrade() <= this->gradeToExec)
+	{
+		this->executeContract();
+	}
+	if (!this->isSigned)
+	{
+		throw(AForm::FormNotSignedException());
+	}
+	else
+	{
+		throw(AForm::GradeTooLowException());
+	}
+}
+
 // Exception(s)
 const char *AForm::GradeTooHighException::what() const throw()
 {
-	return ("AForm -> GradeTooHighException, grade is too high to sign");
+	return ("AForm -> GradeTooHighException, grade is too high to sign/execute");
 }
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return ("AForm -> GradeTooLowException, grade is too low to sign");
+	return ("AForm -> GradeTooLowException, grade is too low to sign/execute");
+}
+
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return ("AForm -> FormNotSignedException, contract must be signed before executed");
 }
