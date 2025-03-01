@@ -83,6 +83,79 @@ void ScalarConverter::convert(std::string value)
 	if (!isLitteral(value))
 	{
 		std::cout << "Please enter a valid representation of litteral in C++ !" << std::endl;
+		return ;
 	}
 
+	char c;
+	int i;
+	float f;
+	double d;
+
+	if (value[value.size() - 1] == 'f')
+	{
+		f = atof(value.c_str());
+		d = static_cast<double> (f);
+		i = static_cast<int> (f);
+		c = static_cast<char> (f);
+	}
+	else if (value.find('.') != std::string::npos)
+	{
+		d = strtod(value.c_str(), NULL);
+		f = static_cast<float> (d);
+		i = static_cast<int> (d);
+		c = static_cast<char> (d);
+	}
+	else
+	{
+		i = atoi(value.c_str());
+		f = static_cast<float> (i);
+		d = static_cast<double> (i);
+		c = static_cast<char> (i);
+	}
+
+	std::string charValue;
+	std::string intValue;
+	std::string floatValue;
+	std::string doubleValue;
+	std::stringstream stringStream;
+
+
+	if (isprint(c))
+	{
+		stringStream << '\'' << c << '\'';
+		charValue = stringStream.str();
+		stringStream.clear();
+		stringStream.str("");
+	}
+	else
+	{
+		charValue = "Non displayable";
+	}
+
+	stringStream << i;
+	stringStream >> intValue;
+	stringStream.clear();
+	stringStream.str("");
+
+	stringStream << f << 'f';
+	stringStream >> floatValue;
+	stringStream.clear();
+	if (floatValue.find('.') == std::string::npos)
+	{
+		stringStream << f << ".0" << 'f';
+	}
+	stringStream >> floatValue;
+	stringStream.clear();
+
+	stringStream << d;
+	stringStream >> doubleValue;
+	stringStream.clear();
+	if (doubleValue.find('.') == std::string::npos)
+	{
+		stringStream << f << ".0";
+	}
+	stringStream >> doubleValue;
+	stringStream.clear();
+
+	printValues(charValue, intValue, floatValue, doubleValue);
 }
